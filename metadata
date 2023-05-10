@@ -1,0 +1,253 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_1_2.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_3_4.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_1_2.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_3_4.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/student_metadata_task_1_2.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/student_metadata_task_3_4.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+df=pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/student_metadata_task_3_4.csv')
+print(df)
+missing_values=df.isnull().sum()
+print(missing_values)
+
+answer_task_1_2 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_1_2.csv')
+answer_task_3_4 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_3_4.csv')
+question_task_1_2 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_1_2.csv')
+question_task_3_4 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_3_4.csv')
+student_task_1_2 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/student_metadata_task_1_2.csv')
+student_task_3_4 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/student_metadata_task_3_4.csv')
+
+answer_task_1_2_train, answer_task_1_2_test = train_test_split(answer_task_1_2, test_size=0.2, random_state=42)
+answer_task_3_4_train, answer_task_3_4_test = train_test_split(answer_task_3_4, test_size=0.2, random_state=42)
+question_task_1_2_train, question_task_1_2_test = train_test_split(question_task_1_2, test_size=0.2, random_state=42)
+question_task_3_4_train, question_task_3_4_test = train_test_split(question_task_3_4, test_size=0.2, random_state=42)
+student_task_1_2_train, student_task_1_2_test = train_test_split(student_task_1_2, test_size=0.2, random_state=42)
+student_task_3_4_train, student_task_3_4_test = train_test_split(student_task_3_4, test_size=0.2, random_state=42)
+
+print(answer_task_1_2_train.shape, answer_task_1_2_test.shape)
+print(answer_task_3_4_train.shape, answer_task_3_4_test.shape)
+print(question_task_1_2_train.shape, question_task_1_2_test.shape)
+print(question_task_3_4_train.shape, question_task_3_4_test.shape)
+print(student_task_1_2_train.shape, student_task_1_2_test.shape)
+print(student_task_3_4_train.shape, student_task_3_4_test.shape)
+
+print(answer_task_1_2_train.isnull().sum())
+print(answer_task_1_2_test.isnull().sum())
+print(answer_task_3_4_train.isnull().sum())
+print(answer_task_3_4_test.isnull().sum())
+print(question_task_1_2_train.isnull().sum())
+print(question_task_1_2_test.isnull().sum())
+print(question_task_3_4_train.isnull().sum())
+print(question_task_3_4_test.isnull().sum())
+print(student_task_1_2_train.isnull().sum())
+print(student_task_1_2_test)
+
+
+answer_task_1_2 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_1_2.csv')
+print(answer_task_1_2.head())
+
+answer_task_1_2_train, answer_task_1_2_test = train_test_split(answer_task_1_2, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(answer_task_1_2_train[['feature_1', 'feature_2']], answer_task_1_2_train['target'])
+
+predictions = model.predict(answer_task_1_2_test[['feature_1', 'feature_2']])
+
+mse = mean_squared_error(answer_task_1_2_test['target'], predictions)
+print("Answer metadata task 1-2 mean squared error: ", mse)
+
+
+answer_task_3_4 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/answer_metadata_task_3_4.csv')
+print(answer_task_3_4.head())
+
+answer_task_3_4_train, answer_task_3_4_test = train_test_split(answer_task_3_4, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(answer_task_3_4_train[['feature_1', 'feature_2']], answer_task_3_4_train['target'])
+
+predictions = model.predict(answer_task_3_4_test[['feature_1', 'feature_2']])
+
+mse = mean_squared_error(answer_task_3_4_test['target'], predictions)
+print("Answer metadata task 3-4 mean squared error: ", mse)
+
+question_task_1_2 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_1_2.csv')
+print(question_task_1_2.head())
+
+question_task_1_2_train, question_task_1_2_test = train_test_split(question_task_1_2, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(question_task_1_2_train[['feature_1', 'feature_2']], question_task_1_2_train['target'])
+
+predictions = model.predict(question_task_1_2_test[['feature_1', 'feature_2']])
+
+mse = mean_squared_error(question_task_1_2_test['target'], predictions)
+print("Question metadata task 1-2 mean squared error: ", mse)
+
+
+question_task_3_4 = pd.read_csv('C:/Users/Admin/Documents/01 data/data/metadata/question_metadata_task_3_4.csv')
+print(question_task_3_4.head())
+
+Results:
+            AnswerId             DateAnswered  ...  QuizId  SchemeOfWorkId
+0         11808339.0  2020-03-17 07:55:00.000  ...   14854             NaN
+1            98649.0  2018-12-18 14:23:00.000  ...   16895         28237.0
+2           259238.0  2019-02-21 12:41:00.000  ...    1127          8386.0
+3         17027648.0  2020-03-01 18:13:00.000  ...    5126         40960.0
+4          6579101.0  2019-03-22 14:57:00.000  ...   13445             NaN
+             ...                      ...  ...     ...             ...
+19834815   6955999.0  2019-09-27 11:05:00.000  ...    9378          8375.0
+19834816    950591.0  2020-04-29 08:39:00.000  ...   10639             NaN
+19834817   5181829.0  2018-11-16 11:40:00.000  ...   11950          8464.0
+19834818   8813030.0  2020-03-07 20:20:00.000  ...   13776             NaN
+19834819   5948776.0  2019-09-30 15:37:00.000  ...   12206             NaN
+
+[19834820 rows x 6 columns]
+AnswerId                 7
+DateAnswered             0
+Confidence        17952128
+GroupId                  0
+QuizId                   0
+SchemeOfWorkId    10107940
+dtype: int64
+         AnswerId             DateAnswered  ...  QuizId  SchemeOfWorkId
+0         1451945  2019-10-30 14:34:00.000  ...      32         52562.0
+1           45325  2020-01-06 18:53:00.000  ...      66         52562.0
+2          687013  2020-01-18 10:52:00.000  ...      64         52562.0
+3           91254  2020-02-29 17:25:00.000  ...      97         52562.0
+4         1225855  2020-03-06 15:07:00.000  ...     115         52562.0
+          ...                      ...  ...     ...             ...
+1508912    880336  2019-12-05 18:56:00.000  ...      84         52562.0
+1508913    701366  2020-01-20 20:27:00.000  ...      65         52562.0
+1508914    646214  2019-12-17 19:33:00.000  ...      84         52562.0
+1508915    346788  2019-10-25 15:00:00.000  ...      73         52562.0
+1508916    949136  2019-11-01 21:29:00.000  ...      49         52562.0
+
+[1508917 rows x 6 columns]
+AnswerId                0
+DateAnswered            0
+Confidence        1125821
+GroupId                 0
+QuizId                  0
+SchemeOfWorkId     143461
+dtype: int64
+       QuestionId                            SubjectId
+0           13090  [3, 32, 71, 77, 141, 185, 186, 214]
+1            1855                 [3, 71, 75, 86, 178]
+2           10423                     [3, 32, 38, 239]
+3            2290                     [3, 32, 33, 144]
+4           12785                     [3, 32, 33, 144]
+          ...                                  ...
+27608        8083                    [3, 32, 144, 208]
+27609       24671                    [3, 32, 144, 208]
+27610       18085                    [3, 32, 144, 208]
+27611       25102                     [3, 32, 38, 239]
+27612        2589                     [3, 32, 36, 222]
+
+[27613 rows x 2 columns]
+QuestionId    0
+SubjectId     0
+dtype: int64
+     QuestionId         SubjectId
+0           684  [3, 71, 98, 209]
+1            87  [3, 71, 98, 209]
+2           679  [3, 71, 98, 209]
+3           685  [3, 71, 98, 209]
+4           222  [3, 71, 98, 209]
+..          ...               ...
+943         313  [3, 32, 39, 230]
+944         239  [3, 32, 39, 230]
+945         397  [3, 32, 39, 230]
+946         897  [3, 32, 39, 230]
+947         518  [3, 32, 39, 230]
+
+[948 rows x 2 columns]
+QuestionId    0
+SubjectId     0
+dtype: int64
+        UserId  Gender              DateOfBirth  PremiumPupil
+0        58022       2  2006-08-01 00:00:00.000           1.0
+1       104674       0                      NaN           NaN
+2        32020       2  2008-11-01 00:00:00.000           1.0
+3        81780       2  2004-07-01 00:00:00.000           NaN
+4        99967       0                      NaN           NaN
+       ...     ...                      ...           ...
+118966  107741       1  2003-05-01 00:00:00.000           0.0
+118967   44720       2  2010-11-01 00:00:00.000           0.0
+118968  100963       2  2007-10-01 00:00:00.000           0.0
+118969   17170       0                      NaN           NaN
+118970   31654       2  2004-05-01 00:00:00.000           0.0
+
+[118971 rows x 4 columns]
+UserId              0
+Gender              0
+DateOfBirth     38390
+PremiumPupil    84585
+dtype: int64
+      UserId  Gender              DateOfBirth  PremiumPupil
+0       3837       2  2007-10-01 00:00:00.000           0.0
+1        207       0                      NaN           NaN
+2       3581       2  2008-03-01 00:00:00.000           0.0
+3       6028       2  2008-01-01 00:00:00.000           0.0
+4       1451       0                      NaN           NaN
+     ...     ...                      ...           ...
+6143    5831       0                      NaN           NaN
+6144    3165       2  2008-01-01 00:00:00.000           0.0
+6145     273       2                      NaN           NaN
+6146    2169       2  2008-03-01 00:00:00.000           0.0
+6147     739       0                      NaN           NaN
+
+[6148 rows x 4 columns]
+UserId             0
+Gender             0
+DateOfBirth     3314
+PremiumPupil    3607
+dtype: int64
+      UserId  Gender              DateOfBirth  PremiumPupil
+0       3837       2  2007-10-01 00:00:00.000           0.0
+1        207       0                      NaN           NaN
+2       3581       2  2008-03-01 00:00:00.000           0.0
+3       6028       2  2008-01-01 00:00:00.000           0.0
+4       1451       0                      NaN           NaN
+     ...     ...                      ...           ...
+6143    5831       0                      NaN           NaN
+6144    3165       2  2008-01-01 00:00:00.000           0.0
+6145     273       2                      NaN           NaN
+6146    2169       2  2008-03-01 00:00:00.000           0.0
+6147     739       0                      NaN           NaN
+
+[6148 rows x 4 columns]
+UserId             0
+Gender             0
+DateOfBirth     3314
+PremiumPupil    3607
+dtype: int64
